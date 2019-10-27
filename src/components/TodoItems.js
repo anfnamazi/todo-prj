@@ -2,9 +2,18 @@ import React, { Component } from 'react'
 import TodoItem from './TodoItem'
 import TodoStore from '../stores/TodoStore'
 import { observer } from 'mobx-react'
+import TodoFooter from './TodoFooter'
 
 @observer
 class TodoItems extends Component {
+    onCloseAll = () => {
+        var allLi = document.getElementsByTagName("li")
+        var allInputs = document.getElementsByTagName("input");
+        for (var i = 0, max = allInputs.length; i < max; i++) {
+            if (allInputs[i].checked == true)
+                allLi[i - 1].classList.add('hidden')
+        }
+    }
     render() {
         return (
             <section class="main">
@@ -17,6 +26,7 @@ class TodoItems extends Component {
                         })
                     }
                 </ul>
+                <TodoFooter onClick={this.onCloseAll} />
             </section>
         )
     }

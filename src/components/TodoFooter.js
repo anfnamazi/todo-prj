@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import TodoItems from './TodoItems'
+import { observer } from 'mobx-react'
 
+@observer
 export default class TodoFooter extends Component {
+   
     render() {
         return (
             <div>
@@ -17,7 +21,7 @@ export default class TodoFooter extends Component {
                             <a href="#/completed">Completed</a>
                         </li>
                     </ul>
-                    <button className="clear-completed">Clear completed</button>
+                    <button className="clear-completed" onClick={this.props.onClick}>Clear completed</button>
                 </footer>
             </div>
         )
