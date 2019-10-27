@@ -17,4 +17,8 @@ export default class TodoModel {
     toggle() {
         this.completed = !this.completed
     }
+    @action
+    close(){
+        document.getElementById(this.id).classList.add('hidden')
+    }
 }
