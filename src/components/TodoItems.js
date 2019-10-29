@@ -7,14 +7,17 @@ import TodoFooter from './TodoFooter'
 @observer
 class TodoItems extends Component {
     onCloseAll = () => {
-        var allLi = document.getElementsByTagName("li")
-        var allInputs = document.getElementsByTagName("input");
-        for (var i = 0, max = allInputs.length; i < max; i++) {
-            if (allInputs[i].checked == true)
-                allLi[i - 1].classList.add('hidden')
+        for (var i = 0; i < TodoStore.todos.length;) {
+            if (TodoStore.todos[i].completed === true) {
+                TodoStore.todos.splice(i, 1)
+            } else {
+                i++
+            }
         }
     }
+
     render() {
+        console.log(TodoStore.todos.length)
         return (
             <section class="main">
                 <ul class="todo-list">
