@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
+import TodoStore from '../stores/TodoStore'
 
 @observer
 export default class TodoFooter extends Component {
-   
+
     render() {
+        let x = 0
         return (
             <div>
                 <footer className="footer">
-                    <span className="todo-count"><strong>0</strong> item left</span>
+                    <span className="todo-count"><strong>{
+                        TodoStore.todos.map(todo => {
+                            if (todo.completed) {
+                                x++
+                            }
+                        })}{TodoStore.todos.length-x}</strong> item left</span>
                     <ul className="filters">
                         <li>
                             <a className="selected" href="#/">All</a>

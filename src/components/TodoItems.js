@@ -17,7 +17,6 @@ class TodoItems extends Component {
     }
 
     render() {
-        console.log(TodoStore.todos.length)
         return (
             <section class="main">
                 <ul class="todo-list">
