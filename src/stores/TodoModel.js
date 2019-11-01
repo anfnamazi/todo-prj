@@ -20,5 +20,6 @@ export default class TodoModel {
     @action
     close() {
         document.getElementById(this.id).remove()
+        this.completed = true
     }
 }
