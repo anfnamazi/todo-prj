@@ -1,4 +1,5 @@
 import { observable, action } from 'mobx'
+import TodoStore from '../stores/TodoStore'
 
 export default class TodoModel {
     store
@@ -19,7 +20,12 @@ export default class TodoModel {
     }
     @action
     close() {
-        document.getElementById(this.id).remove()
-        this.completed = true
+        for (var i = 0; i < TodoStore.todos.length;) {
+            if (TodoStore.todos[i].id === this.id) {
+                TodoStore.todos.splice(i, 1)
+            } else {
+                i++
+            }
+        }
     }
 }

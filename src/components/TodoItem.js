@@ -12,7 +12,7 @@ export default class TodoItem extends Component {
     render() {
         const { todo } = this.props
         return (
-            <li className={todo.completed ? 'completed' : ' '} id={todo.id}>
+            <li className={todo.completed ? 'completed' : ' '}>
                 <div className="view">
                     <input
                     onChange={this.onToggle}
