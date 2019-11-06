@@ -5,20 +5,29 @@ import TodoStore from '../stores/TodoStore'
 @observer
 export default class TodoFooter extends Component {
 
+    state={
+        ifOne:true,
+        ifTwo:false,
+        ifThree:false
+    }
+
     onClearCompleted = () => {
         TodoStore.clearCompleted()
     }
 
     onShowActive = () => {
         TodoStore.showActive()
+        this.setState({ifOne:false,ifTwo:true,ifTree:false})
     }
 
     onShowCompelted = () => {
         TodoStore.showCompelted()
+        this.setState({ifOne:false,ifTwo:false,ifTree:true})
     }
 
     onShowAll = () => {
         TodoStore.showAll()
+        this.setState({ifOne:true,ifTwo:false,ifTree:false})
     }
 
     render() {
@@ -34,13 +43,13 @@ export default class TodoFooter extends Component {
                         })}{TodoStore.todos.length - x}</strong> item left</span>
                     <ul className="filters">
                         <li>
-                            <a className="selected" href="#/" onClick={this.onShowAll}>All</a>
+                            <a className={this.state.ifOne?'selected':''} href="#/" onClick={this.onShowAll}>All</a>
                         </li>
                         <li>
-                            <a href="#/active" onClick={this.onShowActive}>Active</a>
+                            <a className={this.state.ifTwo?'selected':''} href="#/active" onClick={this.onShowActive}>Active</a>
                         </li>
                         <li>
-                            <a href="#/completed" onClick={this.onShowCompelted}>Completed</a>
+                            <a className={this.state.ifTree?'selected':''} href="#/completed" onClick={this.onShowCompelted}>Completed</a>
                         </li>
                     </ul>
                     <button className="clear-completed" onClick={this.onClearCompleted}>Clear completed</button>
