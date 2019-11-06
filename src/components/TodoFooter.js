@@ -5,16 +5,20 @@ import TodoStore from '../stores/TodoStore'
 @observer
 export default class TodoFooter extends Component {
 
+    onClearCompleted = () => {
+        TodoStore.clearCompleted()
+    }
+
     onShowActive = () => {
-        
+        TodoStore.showActive()
     }
 
     onShowCompelted = () => {
-        
+        TodoStore.showCompelted()
     }
 
-    onClearCompleted = () => {
-        TodoStore.clearCompleted()
+    onShowAll = () => {
+        TodoStore.showAll()
     }
 
     render() {
@@ -30,7 +34,7 @@ export default class TodoFooter extends Component {
                         })}{TodoStore.todos.length - x}</strong> item left</span>
                     <ul className="filters">
                         <li>
-                            <a className="selected" href="#/">All</a>
+                            <a className="selected" href="#/" onClick={this.onShowAll}>All</a>
                         </li>
                         <li>
                             <a href="#/active" onClick={this.onShowActive}>Active</a>
