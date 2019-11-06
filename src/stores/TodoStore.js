@@ -8,6 +8,12 @@ class TodoStore {
     addTodo(title) {
         this.todos.push(new TodoModel(this, title, false, this.lastID++))
     }
+
+    @action
+    clearCompleted() {
+        this.todos = this.todos.filter(todo => todo.completed === false)
+    }
+
 }
 
 const store = new TodoStore()

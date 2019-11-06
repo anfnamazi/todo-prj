@@ -5,6 +5,18 @@ import TodoStore from '../stores/TodoStore'
 @observer
 export default class TodoFooter extends Component {
 
+    onShowActive = () => {
+        
+    }
+
+    onShowCompelted = () => {
+        
+    }
+
+    onClearCompleted = () => {
+        TodoStore.clearCompleted()
+    }
+
     render() {
         let x = 0
         return (
@@ -15,19 +27,19 @@ export default class TodoFooter extends Component {
                             if (todo.completed) {
                                 x++
                             }
-                        })}{TodoStore.todos.length-x}</strong> item left</span>
+                        })}{TodoStore.todos.length - x}</strong> item left</span>
                     <ul className="filters">
                         <li>
                             <a className="selected" href="#/">All</a>
                         </li>
                         <li>
-                            <a href="#/active">Active</a>
+                            <a href="#/active" onClick={this.onShowActive}>Active</a>
                         </li>
                         <li>
-                            <a href="#/completed">Completed</a>
+                            <a href="#/completed" onClick={this.onShowCompelted}>Completed</a>
                         </li>
                     </ul>
-                    <button className="clear-completed" onClick={this.props.onClick}>Clear completed</button>
+                    <button className="clear-completed" onClick={this.onClearCompleted}>Clear completed</button>
                 </footer>
             </div>
         )
