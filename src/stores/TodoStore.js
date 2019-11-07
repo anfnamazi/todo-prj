@@ -15,29 +15,37 @@ class TodoStore {
     @observable allLi = document.getElementsByTagName('li')
     @action
     showAll = () => {
+        clearInterval(this.interval2)
+        clearInterval(this.interval)
         for (let i = 0; i < this.allLi.length; i++) {
             this.allLi[i].classList.remove('hidden')
         }
     }
     @action
     showActive = () => {
-        for (let i = 0; i < this.allLi.length; i++) {
-            if (this.allLi[i].classList.contains('completed')) {
-                this.allLi[i].classList.add('hidden')
-            } else {
-                this.allLi[i].classList.remove('hidden')
+        clearInterval(this.interval2)
+        this.interval = setInterval(() => {
+            for (let i = 0; i < this.allLi.length; i++) {
+                if (this.allLi[i].classList.contains('completed')) {
+                    this.allLi[i].classList.add('hidden')
+                } else {
+                    this.allLi[i].classList.remove('hidden')
+                }
             }
-        }
+        })
     }
     @action
     showCompelted = () => {
-        for (let i = 0; i < this.allLi.length; i++) {
-            if (this.allLi[i].classList.contains('completed')) {
-                this.allLi[i].classList.remove('hidden')
-            } else {
-                this.allLi[i].classList.add('hidden')
+        clearInterval(this.interval)
+        this.interval2 = setInterval(() => {
+            for (let i = 0; i < this.allLi.length; i++) {
+                if (this.allLi[i].classList.contains('completed')) {
+                    this.allLi[i].classList.remove('hidden')
+                } else {
+                    this.allLi[i].classList.add('hidden')
+                }
             }
-        }
+        })
     }
 }
 
