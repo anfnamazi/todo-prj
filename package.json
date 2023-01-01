@@ -10,7 +10,7 @@
     "react-app-rewire-mobx": "^1.0.9",
     "react-app-rewired": "1.6.2",
     "react-dom": "^16.11.0",
-    "react-scripts": "1.1.4",
+    "react-scripts": "5.0.1",
     "todomvc-app-css": "^2.3.0"
   },
   "scripts": {
